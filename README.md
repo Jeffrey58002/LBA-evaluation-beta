@@ -1,9 +1,9 @@
 # LBA-evaluation-beta
-Install
+Install:
 ```
     pip install -r requirements.txt
 ```
-Your set up your test data:
+To set up your test data:
 ```
     ./test_suite repository/test_suite.JSON
 ```
