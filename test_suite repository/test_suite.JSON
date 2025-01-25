@@ -1,0 +1,91 @@
+{
+    "tests_suite_01": [
+      {
+        "test_name": "function_test_01_order_inquiry",
+        "input":"你好，我想詢問我上週訂購的包裹，目前運送狀況如何？",
+        "expected_output": {
+          "order_number": ["請輸入您的訂單編號以便查詢。"],
+          "order_information": ["order_number: 123456, order_amount: ..."],
+          "additional_messege": ["若有進一步的疑問..."]
+        },
+        "actual_output": {
+          "order_number": ["請輸入您的訂單編號讓我查詢。"],
+          "order_information": ["order_id: 123456, order_amount: ..."],
+          "additional_messege": ["若您需要進一步協助..."],
+          "some_extra_key": ["..."]
+        },
+        "thresholds": [0.95, 0.9, 0.8]
+      },
+      {
+        "test_name": "function_test_02_order_status_inquiry",
+        "input":"你好，我想確認上週訂的鞋子的訂單狀態。",
+        "expected_output": {
+          "order_status": ["您的訂單目前狀態為：已出貨。"],
+          "delivery_start_date":["出貨日期: 01-24-2025"],
+          "delivery_arrival_date":["預計抵達時間:01-27-2025"]
+        },
+        "actual_output": {
+          "order_status": ["您的訂單目前狀態為：已出貨。"],
+          "delivery_start_date":["出貨日期: 01-24-2025"],
+          "delivery_arrival_date":["預計抵達時間:01-27-2025"]
+        },
+        "thresholds":[0.9, 0.9, 0.9]
+      }
+      ,
+      {
+        "test_name": "function_test_03_order_cancellation_and_status",
+        "input":"你好，我想確認我的訂單有沒有成功的取消。",
+        "expected_output": {
+          "order_number": ["請輸入您的訂單編號以便查詢:"],
+          "order_cancellation": ["您的訂單已成功取消。"],
+          "order_status": ["目前訂單狀態為：已取消。"],
+          "additional_message": ["如需其他協助，請告知我們。"]
+        },
+        "actual_output": {
+          "order_cancellation": ["您的訂單已取消。"],
+          "order_status": ["訂單狀態：已取消。"]
+        },
+        "thresholds":[0.9, 0.8, 0.7, 0.5]
+      },
+      {
+        "test_name": "edge_test_01_empty_input",
+        "input":"",
+        "expected_output": {
+          "error_message": ["輸入內容不得為空，請提供訂單相關資訊。"]
+        },
+        "actual_output": {
+          "error_message": ["輸入內容為空，請重新輸入。"]
+        },
+        "thresholds":[0.88]
+      },
+      {
+        "test_name": "edge_test_02_incomplete_input",
+        "input":"請你幫我查詢訂單狀態，訂單號碼:12345",
+        "expected_output": {
+          "error_message": ["您的輸入不完整，請提供完整的訂單編號。"],
+          "clarification_message": ["例如：請輸入正確的6位數訂單編號。"]
+        },
+        "actual_output": {
+          "error_message": ["您的輸入不完整，請提供完整的訂單編號。"],
+          "clarification_message": ["例如：請輸入正確的6位數訂單編號。"]
+        },
+        "thresholds":[0.7, 0.9]
+      },
+      {
+        "test_name": "edge_test_03_multiple_possible_choices",
+        "input":"你好，我想確認我上週的訂單的狀態",
+        "expected_output": {
+          "clarification_message": ["我們找到多筆符合條件的訂單，請選擇一筆進行查詢：1. 訂單編號：123456；2. 訂單編號：654321。"]
+        },
+        "actual_output": {
+          "clarification_message": ["我們找到多筆符合條件的訂單，請選擇一筆進行查詢：1. 訂單編號：123456；2. 訂單編號：654321。"]
+        }
+        ,
+        "thresholds":[0.8]
+      }
+      
+
+
+    ]
+  }
+  
