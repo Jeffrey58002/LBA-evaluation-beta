@@ -6,9 +6,7 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 import math
 
-# 你可能需要設置環境變數或某種機制來放API key
-# 這裡簡單示範，如果要保密就不要硬編在程式裡
-#openai.api_key = os.getenv("OPENAI_API_KEY", "YOUR_API_KEY")
+#openai.api_key = os.getenv("OPENAI_API_KEY", "YOUR_API_KEY") #Enter your API key here
 client = OpenAI(api_key="your api key")
 
 def get_embedding(text: str, model: str = "text-embedding-3-small") -> np.ndarray:
@@ -32,5 +30,3 @@ def compare_as_whole_text(expected_list, actual_list, threshold):
     pass_check = math.isclose(similarity, threshold, rel_tol=1e-9) or similarity >= threshold
 
     return similarity, pass_check
-
-# 其他跟 embedding 或 similarity 計算相關的函式，如果有，就一併放在這裡
