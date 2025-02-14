@@ -6,10 +6,6 @@ from itertools import product
 from embedding_utils import calculate_similarity, compare_as_whole_text
 
 def hybrid_similarity(expected_list, actual_list, thresholds):
-    """
-    若你需要保留這個函式做測試，就搬到這裡。
-    """
-    # 這裡舉例，只保留 compare_as_whole_text 進行示範
     whole_similarity, whole_pass = compare_as_whole_text(
         expected_list,
         actual_list,
@@ -105,7 +101,7 @@ def compute_final_score(expected: dict, actual: dict, results: dict) -> float:
         # 如果這個 key 是 expected 裡的，但 pass=False 就算 missing
         if key in expected:
             if not info.get("pass"):
-                # 這裡要看你的業務邏輯如何計算 missing vs extra
+                # 如何計算 missing vs extra
                 missing_count += 1
                 extra_count += 1
 
