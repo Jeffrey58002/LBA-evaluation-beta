@@ -2,7 +2,6 @@
 from compare_utils import compare_json, compute_final_score, display_result
 
 if __name__ == "__main__":
-    # 這裡舉例我們用硬编码的 expected_output 與 output 來測試
     expected_output = {
         "order_number": [
             "請輸入您的訂單編號以便查詢。"
