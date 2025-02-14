@@ -48,7 +48,7 @@ def run_tests_from_file(filepath):
 
 
 if __name__ == "__main__":
-    # 假設我們有個測試檔 test_suite.json
+    # 測試檔 test_suite.json
     summary = run_tests_from_file("./test_suite repository/test_suite.JSON")
     print("All tests completed. Summary:")
     for item in summary:
